@@ -25,10 +25,10 @@ joose.storage = (function(js) {
     };
 
     // get a cookie value
-    /*var getCookie = function(name) {
+    var getCookie = function(name) {
         var cookieObject = joose.utils.convertStringToObject(document.cookie, '; ');
         return cookieObject[name];
-    };*/
+    };
 
     // set a cookie value
     var setCookie = function(name, value, expiresInDays, path) {
@@ -37,7 +37,7 @@ joose.storage = (function(js) {
         var cookieValue = name + '=' + value;
 
         // if an expiry limit is supplied add this to the cookie string in the proper format
-        if (expiresInDays) {
+        if (expiresInDays && typeof expiresInDays === 'number') {
 
             // get todays date and convert this into milliseconds value
             var today = new Date();
@@ -47,7 +47,7 @@ joose.storage = (function(js) {
             var expiryTime = new Date(todayInMilliseconds + (expiresInDays * 24 * 60 * 60 * 1000));
 
             // add to cookie string
-            cookieValue += '; expires=' + expiryTime.toUTCString();
+            cookieValue += '; expires=' + expiryTime.toGMTString();
         }
 
         // if a path is defined add this to the cookie value
@@ -58,15 +58,13 @@ joose.storage = (function(js) {
     };
 
     // remove a cookie value
-    /*var removeCookie = function(name) {
-        var cookieObject = joose.utils.convertStringToObject(document.cookie, '; ');
-        delete cookieObject[name];
-        document.cookie = joose.utils.convertObjectToString(cookieObject, '; ');
-    };*/
+    var removeCookie = function(name) {
+        setCookie(name, undefined, -1);
+    };
 
     // get a session storage value
     var getSessionStorage = function(name) {
-        sessionStorage.getItem(name);
+        return sessionStorage.getItem(name);
     };
 
     // set a session storage value
@@ -75,13 +73,13 @@ joose.storage = (function(js) {
     };
 
     // remove a session storage value
-    var removeSessionStorage = function() {
+    var removeSessionStorage = function(name) {
         sessionStorage.removeItem(name);
     };
 
     // get a local storage value
     var getLocalStorage = function(name) {
-        localStorage.getItem(name);
+        return localStorage.getItem(name);
     };
 
     // set a local storage value
@@ -98,13 +96,13 @@ joose.storage = (function(js) {
     var getStorageValue = function(type, name) {
         switch (type) {
             case config.storageTypes.cookie:
-                getCookie(name);
+                return getCookie(name);
                 break;
             case config.storageTypes.sessionStorage:
-                getSessionStorage(name);
+                return getSessionStorage(name);
                 break;
             case config.storageTypes.localStorage:
-                getLocalStorage(name);
+                return getLocalStorage(name);
                 break;
             default:
                 return false;
@@ -146,10 +144,10 @@ joose.storage = (function(js) {
     };
 
     // helper method to handle storage of any type and action
-    var storage = function(action, type, name, value) {
+    var handle = function(action, type, name, value) {
         switch (action) {
             case config.actions.get:
-                getStorageValue(type, name);
+                return getStorageValue(type, name);
                 break;
             case config.actions.set:
                 setStorageValue(type, name, value);
@@ -176,7 +174,7 @@ joose.storage = (function(js) {
         getStorageValue: getStorageValue,
         setStorageValue: setStorageValue,
         removeStorageValue: removeStorageValue,
-        storage: storage
+        handle: handle
     }
 
 })(joose);
