@@ -1,0 +1,30 @@
+{
+  "name": "joose-storage",
+  "description": "A lightweight, minimal storage helper with a few varieties of approach. Part of the joose component library",
+  "main": "js/joose-storage.js",
+  "authors": [
+    "Phil Gibbins <scoobster17@hotmail.co.uk> (http://www.philgibbins.com)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "joose",
+    "storage",
+    "joose-storage",
+    "cookie",
+    "cookies",
+    "localStorage",
+    "sessionStorage"
+  ],
+  "homepage": "https://github.com/scoobster17/joose-storage",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "joose-utils": "*"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "joose-storage",
+  "version": "1.0.0",
+  "description": "A lightweight, minimal storage helper with a few varieties of approach. Part of the joose component library",
+  "main": "js/joose-storage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scoobster17/joose-storage.git"
+  },
+  "keywords": [
+    "joose",
+    "storage",
+    "joose-storage",
+    "cookie",
+    "cookies",
+    "localStorage",
+    "sessionStorage"
+  ],
+  "author": "Phil Gibbins <scoobster17@hotmail.co.uk> (http://www.philgibbins.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scoobster17/joose-storage/issues"
+  },
+  "homepage": "https://github.com/scoobster17/joose-storage",
+  "devDependencies": {
+    "joose-utils": "^1.0.0"
+  }
+}
