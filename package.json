@@ -1,6 +1,6 @@
 {
   "name": "joose-storage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight, minimal storage helper with a few varieties of approach. Part of the joose component library",
   "main": "js/joose-storage.js",
   "scripts": {
@@ -25,6 +25,9 @@
     "url": "https://github.com/scoobster17/joose-storage/issues"
   },
   "homepage": "https://github.com/scoobster17/joose-storage",
+  "dependencies": {
+    "joose-utils": "^1.0.0"
+  },
   "devDependencies": {
     "joose-utils": "^1.0.0"
   }

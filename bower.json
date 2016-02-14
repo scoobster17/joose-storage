@@ -24,6 +24,9 @@
     "test",
     "tests"
   ],
+  "dependencies": {
+    "joose-utils": "*"
+  },
   "devDependencies": {
     "joose-utils": "*"
   }
